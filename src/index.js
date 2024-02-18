@@ -83,14 +83,17 @@ function formatDate(date) {
   ];
 
   let day = date.getDay();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
+  // let hours = date.getHours();
+  // let minutes = date.getMinutes();
 
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+  // if (minutes < 10) {
+  //   minutes = `0${minutes}`;
+  // }
 
-  return `${days[day]}, <strong>${hours}:${minutes}</strong>`;
+  // return `${days[day]}, <strong>${hours}:${minutes}</strong>`;
+  /* I decided to get rid of the time being displayed as this information in the API is misleading and is the 
+  date the weather information was last updated, rather than the time of that city! */
+  return `<strong>${days[day]}</strong>`;
 }
 
 // FUNCTION TO GET THE FORECAST DATA FROM THE API
@@ -163,4 +166,10 @@ function changeTheme() {
   } else {
     themeButton.innerHTML = "Light Theme";
   }
+}
+
+function cityTime(city) {
+  let apiKey = "145at3bd88ddc4bf6od1483d03f4ef43";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query={${city}}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(populateScreen);
 }
