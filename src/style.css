@@ -97,6 +97,49 @@ form {
   /* left: 50px; */
 }
 
+/* FORECAST styling */
+
+/* container set to flex so all the days sit next to each other rather than as divs on top of each other */
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.weather-forecast-date {
+  text-align: center;
+  color: rgba(141, 136, 166);
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.weather-forecast-icon {
+  /* font-size: 38px; */
+  /* changing the size with width instead now that it's an image instead with an actual img tag and src rather than an emoji placeholder */
+  width: 88px;
+  height: 88px;
+  /* centering with display as block and margin 0 auto */
+  display: block;
+  margin: 0 auto;
+}
+
+/* to make the max and min temp go side by side rather than on top of each other, have to also put this in a flex box */
+.weather-forecast-temperatures {
+  text-align: center;
+  color: rgba(127, 83, 215, 0.4);
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* adding spacing between the max and min temps */
+.weather-forecast-temperature {
+  padding: 0 10px;
+}
+
 footer {
   margin-top: 30px;
   font-size: 13px;
@@ -140,4 +183,8 @@ footer {
 
 .light .change-theme-button {
   background: rgba(109, 153, 255, 0.6);
+}
+
+.light .weather-forecast-temperatures {
+  color: rgba(44, 47, 241, 0.6);
 }

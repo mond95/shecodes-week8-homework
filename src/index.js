@@ -64,6 +64,10 @@ function populateScreen(response) {
   // checking the date time has been parsed correctly
   console.log(date);
   dateElement.innerHTML = formatDate(date);
+
+  // Now we need to make sure the getForecast function is called from this point so it all happens together
+  // this will take in the city name from the response and return the forecast data for this
+  getForecast(response.data.city);
 }
 
 // FUNCTION TO FORMAT THE DATE:
@@ -87,6 +91,59 @@ function formatDate(date) {
   }
 
   return `${days[day]}, <strong>${hours}:${minutes}</strong>`;
+}
+
+// FUNCTION TO GET THE FORECAST DATA FROM THE API
+function getForecast(city) {
+  let apiKey = "145at3bd88ddc4bf6od1483d03f4ef43";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  // use axios to get results of the api URL and then this will be used in a displayForecast function
+  axios(apiUrl).then(displayForecast);
+}
+
+// FUNCTION WHICH POPULATES THE FORECAST DATA FROM THE API RESPONSE
+function displayForecast(response) {
+  console.log(response);
+  let forecastHtml = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index > 0 && index <= 5) {
+      forecastHtml =
+        forecastHtml +
+        `
+  <div class="weather-forecast-day">
+              <div class="weather-forecast-date">${formatDay(day.time)}</div>
+              <div>
+              <img src="${
+                day.condition.icon_url
+              }" class="weather-forecast-icon"/>
+              </div>
+              <div class="weather-forecast-temperatures">
+                <div class="weather-forecast-temperature">
+                  <strong>${Math.round(day.temperature.maximum)}º</strong>
+                </div>
+                <div class="weather-forecast-temperature">${Math.round(
+                  day.temperature.minimum
+                )}º</div>
+              </div>
+            </div>
+  `;
+
+      let forecastElement = document.querySelector("#forecast");
+      forecastElement.innerHTML = forecastHtml;
+    }
+  });
+}
+
+// function to format the date from the API
+function formatDay(timestamp) {
+  // we have to multiply by 1000 as the time stamp is in milliseconds
+  let date = new Date(timestamp * 1000);
+
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
+  // remember that getDay() will be a value between 0 and 6
+  return days[date.getDay()];
 }
 
 // FUNCTION TO CHANGE THE THEME
