@@ -1,4 +1,34 @@
-// FOURTH STEP:
+// FIRST STEP:
+// Targeting the search form so that we can say whatever is typed in there and then submitted will trigger the action which will
+// send that typed value i.e. the requested city into the API
+// which will return data relevant to that city which we can choose to populate the screen
+let searchFormElement = document.querySelector("#search-form");
+// checing selected correrct element
+// console.log(searchFormElement);
+
+searchFormElement.addEventListener("submit", getSearchValue);
+
+// FUNCTION TO SEE WHAT CITY WAS SEARCHED FOR SO THIS CAN BE USED IN THE API SEARCH QUERY:
+// Getting what the user has typed in the search input once the 'submit' has happened and then putting it into another function 'getCityData'
+function getSearchValue(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-form-input");
+  //   console.log(searchInput.value);
+  getCityData(searchInput.value);
+}
+
+// Making it so the default is London when you load the page
+getCityData("London");
+
+// FUNCTION TO GET THE API DATA:
+// get the API data which uses the user's inputted city as the query and then call the populateScreen function
+function getCityData(city) {
+  let apiKey = "145at3bd88ddc4bf6od1483d03f4ef43";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query={${city}}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(populateScreen);
+}
+
+// FUNCTION TO TAKE THE POPULATE THE SCREEN WITH THE DATA RETURNED FROM API:
 function populateScreen(response) {
   // to see all the data returned for that city
   console.log(response.data);
@@ -36,7 +66,6 @@ function populateScreen(response) {
   dateElement.innerHTML = formatDate(date);
 }
 
-// FIFTH STEP:
 // FUNCTION TO FORMAT THE DATE:
 function formatDate(date) {
   let days = [
@@ -78,32 +107,3 @@ function changeTheme() {
     themeButton.innerHTML = "Light Theme";
   }
 }
-
-// THIRD STEP:
-// get the API data which uses the user's inputted city as the query and then call the populateScreen function
-function getCityData(city) {
-  let apiKey = "145at3bd88ddc4bf6od1483d03f4ef43";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query={${city}}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(populateScreen);
-}
-
-// SECOND STEP:
-// Getting what the user has typed in the search input once the 'submit' has happened and then putting it into another function 'getCityData'
-function getSearchValue(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-form-input");
-  //   console.log(searchInput.value);
-  getCityData(searchInput.value);
-}
-
-// FIRST STEP:
-// Targeting the search form so that we can say whatever is typed in there and then submitted will trigger the action which will
-// send that typed value i.e. the requested city into the API
-// which will return data relevant to that city which we can choose to populate the screen
-let searchFormElement = document.querySelector("#search-form");
-// checing selected correrct element
-// console.log(searchFormElement);
-
-searchFormElement.addEventListener("submit", getSearchValue);
-
-getCityData("London");
