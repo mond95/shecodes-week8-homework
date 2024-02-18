@@ -68,5 +68,5 @@ https://api.shecodes.io/weather/v1/forecast?query={query}&key={key}
 
 ## Tech Stack
 
-- HTML, CSS, Javascript, API, Hosting, Github
+- HTML, CSS, Flexbox, Javascript, API, Hosting, Github
 
