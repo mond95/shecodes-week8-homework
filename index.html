@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <button class="change-theme-button" id="change-theme-button">
+          Light Theme
+        </button>
+      </div>
+      <div>
+        <form id="search-form">
+          <input
+            type="search"
+            class="search-form-input"
+            id="search-form-input"
+            placeholder="Enter a city"
+          />
+          <input type="submit" value="search" class="search-form-button" />
+        </form>
+      </div>
+    </header>
+    <div class="weather-app">
+      <main>
+        <div class="weather-app-data">
+          <div class="flex-container">
+            <div class="left-container">
+              <h1 class="city" id="city"></h1>
+              <p class="weather-app-details">
+                <!-- <span class="temperature" id="temperature"></span> -->
+                <br />
+                <span class="date" id="date"
+                  >Tuesday, <strong>2:14pm</strong></span
+                >
+                <br />
+                <span
+                  class="weather-description"
+                  id="weather-description"
+                ></span>
+                <br />
+                <span class="wind" id="wind"></span>
+              </p>
+            </div>
+            <div class="right-container">
+              <!-- <div class="icon-temp-container"> -->
+              <div id="icon"></div>
+              <!-- <div class="weather-description" id="weather-description"></div> -->
+              <div class="temperature" id="temperature"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        This project was hosted by
+        <a href="https://github.com/mond95">Monica Diep</a>, is open-sourced on
+        <a href="https://github.com/mond95/shecodes-week7-homework">Github</a>
+        and
+        <a href="https://week7-weather-app-homework.netlify.app/"
+          >hosted on Netlify</a
+        >
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

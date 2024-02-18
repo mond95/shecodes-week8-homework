@@ -1,0 +1,143 @@
+body {
+  background: #0e1015;
+  color: #fdfdfd;
+  font-family: "Nunito", sans-serif;
+}
+
+.weather-app {
+  background: #16181d;
+  border: 2px solid #151623;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: 10px 10px 11px rgba(110, 93, 137, 0.1);
+  border-radius: 15px;
+}
+
+header {
+  text-align: center;
+}
+
+.change-theme-button {
+  margin-right: 1000px;
+  margin-top: 10px;
+  background-color: #2e2638;
+  color: #fdfdfd;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 10px 10px 11px rgba(110, 93, 137, 0.1);
+  transition: all 150ms ease-in-out;
+}
+
+button:hover {
+  border: 1px solid #fdfdfd;
+}
+
+/* in order to center both the search input AND the button together, I had to set both of them individually to 'inline-block
+which will make them block elements so you can add padding, etc, but make them inline so they will appear beside each other and
+they I had to make the div that surrounded this or the form element in this case be set to text-align: center as per https://stackoverflow.com/questions/46696089/how-do-i-align-my-search-input-and-submit-button-to-the-center-of-the-page */
+form {
+  text-align: center;
+}
+
+.search-form-input {
+  width: 30%;
+  border-radius: 10px;
+  padding: 7px 15px;
+  font-size: 15px;
+  margin: 10px auto;
+  text-align: center;
+  background-color: #26143f;
+  border: none;
+  display: inline-block;
+  color: #fdfdfd;
+}
+
+.search-form-input:focus {
+  outline: none;
+}
+
+.search-form-button {
+  padding: 7px 15px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.city {
+  font-size: 36px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+
+.icon {
+  width: 88px;
+  height: 88px;
+  margin: 0;
+}
+
+.temperature {
+  font-size: 60px;
+  margin-bottom: 10px;
+  color: rgb(69, 16, 156);
+}
+
+.weather-description {
+  text-align: center;
+  /* left: 50px; */
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #fdfdfd98;
+}
+
+/* CHANGE THEME BUTTON - LIGHT MODE */
+.light {
+  background: #d6e2f5;
+  color: #0c0e15;
+}
+
+.light .weather-app {
+  background: #fcfdff;
+  border: none;
+  box-shadow: 10px 10px 11px rgba(51, 92, 144, 0.1);
+  color: #0c0e15;
+}
+
+.light .search-form-input {
+  background: #4a80c1cb;
+  color: white;
+}
+
+/* the placeholder text colour wasn't changing because it is grey by default so needed to do this to be able to change the colour */
+.light .search-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.light .temperature {
+  color: #2f77bf;
+}
+
+.light footer {
+  color: #5d7096;
+}
+
+.light a {
+  color: #386194;
+}
+
+.light .change-theme-button {
+  background: rgba(109, 153, 255, 0.6);
+}
